@@ -17,8 +17,8 @@
                 <td>{{ $task->title }}</td>
                 <td>{{ $task->status }}</td>
                 <td>
-                    <a class="btn-sm btn-primary" href="#">Update</a>
-                    <a class="btn-sm btn-danger" href="#">Delete</a>
+                    <button class="btn-sm btn-primary" href="#">Update</button>
+                    <button class="btn-sm btn-danger" wire:click="deleteTask({{ $task->id }})">Delete</button>
                 </td>
             </tr>
         @endforeach
@@ -26,5 +26,4 @@
     </table>
 
     {{ $tasks->links()}}
-
 </div>

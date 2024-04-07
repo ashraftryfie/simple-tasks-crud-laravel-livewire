@@ -8,7 +8,10 @@ use Livewire\WithPagination;
 
 class AppTasks extends Component
 {
-    protected $listeners = ['taskAdded' => '$refresh']; // Listen for add task event
+    protected $listeners = [
+        'taskAdded' => '$refresh',
+        'taskDeleted' => '$refresh',
+    ]; // Listen for add task event
 
     use WithPagination;
     protected string $paginationTheme = 'bootstrap';
@@ -22,5 +25,16 @@ class AppTasks extends Component
             'totalTasks' => $totalTasks,
             'tasks' => $tasks
         ]);
+    }
+
+    public function deleteTask($taskId): void
+    {
+        $task = auth()->user()->tasks()->find($taskId);
+
+        if ($task) {
+            $task->delete();
+            // call the listeners for this operation
+            $this->dispatch('taskDeleted');
+        }
     }
 }
