@@ -1,5 +1,6 @@
 <div>
     <h3 class="text-center">My Tasks ({{$totalTasks}})</h3>
+
     <table class="table bg-white ">
         <thead>
         <tr>
@@ -23,4 +24,7 @@
         @endforeach
         </tbody>
     </table>
+
+    {{ $tasks->links()}}
+
 </div>
