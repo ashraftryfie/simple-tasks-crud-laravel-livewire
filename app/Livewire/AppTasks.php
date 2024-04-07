@@ -2,12 +2,20 @@
 
 namespace App\Livewire;
 
+use Illuminate\Contracts\Support\Renderable;
 use Livewire\Component;
 
 class AppTasks extends Component
 {
-    public function render()
+
+    public function render(): Renderable
     {
-        return view('livewire.app-tasks');
+        $authUserTasks = auth()->user()->tasks();
+        $totalTasks = $authUserTasks->count();
+        $tasks = $authUserTasks->latest(5)->get();
+        return view('livewire.app-tasks', [
+            'totalTasks' => $totalTasks,
+            'tasks' => $tasks
+        ]);
     }
 }

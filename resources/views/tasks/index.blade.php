@@ -1,4 +1,3 @@
-@php use App\Enums\TaskStatus; @endphp
 @extends('layouts.app')
 
 @section('content')
@@ -19,25 +18,7 @@
             </div>
 
             <div class="col-md-8 p-4">
-                <h3 class="text-center">My Task ({{$totalTasks}})</h3>
-                <table class="table bg-white ">
-                    <thead>
-                    <tr>
-                        <th>id</th>
-                        <th>Title</th>
-                        <th>Status</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($tasks as $task)
-                        <tr>
-                            <td>{{ $task->id }}</td>
-                            <td>{{ $task->title }}</td>
-                            <td>{{ $task->status }}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+                @livewire('app-tasks')
             </div>
         </div>
     </div>
