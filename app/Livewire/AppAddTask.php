@@ -22,5 +22,8 @@ class AppAddTask extends Component
         ]);
 
         $this->title = "";
+
+        // call the listeners in AppTasks using the new dispatch method
+        $this->dispatch('taskAdded');
     }
 }

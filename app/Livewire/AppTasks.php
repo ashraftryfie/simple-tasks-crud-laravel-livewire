@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class AppTasks extends Component
 {
+    protected $listeners = ['taskAdded' => '$refresh']; // Listen for add task event
 
     public function render(): Renderable
     {
